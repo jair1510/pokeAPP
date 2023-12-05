@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pokeapp/models/pokemon.dart';
+import 'package:pokeapp/screen/buscador/widget/card_pokemon.dart';
 
 class PokemonScreen extends StatefulWidget {
   final Pokemon pokemon;
-  const PokemonScreen({super.key, required this.pokemon});
+  final int index;
+  const PokemonScreen({super.key, required this.pokemon, required this.index});
 
   @override
   State<PokemonScreen> createState() => _PokemonScreenState();
@@ -12,24 +15,38 @@ class PokemonScreen extends StatefulWidget {
 class _PokemonScreenState extends State<PokemonScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text('Name: ${widget.pokemon.name}'),
-                  Text('Base Experience: ${widget.pokemon.baseExperience}'),
-                  Column(
-                    children: widget.pokemon.abilities.map((ability) {
-                      return Column(
-                        children: [
-                          Text('Ability Name: ${ability.ability.name}'),
-                          Text('Is Hidden: ${ability.isHidden}'),
-                          Text('Slot: ${ability.slot.toString()}'),
-                          Divider(),
-                        ],
-                      );
-                    }).toList(),
+                  Text(
+                    '#${widget.index}',
+                    style: TextStyle(
+                      fontSize: 40.0,  ),
                   ),
+                  SizedBox(
+                    width: 50,
+                  )
                 ],
-              );
+              ),
+              SvgPicture.network(
+                widget.pokemon.image,
+                width: 200,
+                height: 200,
+                placeholderBuilder: (BuildContext context) =>
+                    CircularProgressIndicator(),
+              ),
+             
+            ],
+          ),
+           CardPokemon(pokemon: widget.pokemon)
+        ],
+      ),
+    );
   }
 }

@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  return CardSearch(pokemon: snapshot.data![index]);
+                  return CardSearch(pokemon: snapshot.data![index],index: index+1,);
                 },
               );
             } else if (snapshot.hasError) {
