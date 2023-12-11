@@ -13,7 +13,6 @@ class PokemonAPI{
 
       Pokemon pokemon = Pokemon.fromJson(pokemonData);
       return pokemon;
-      // Puedes acceder a más detalles y trabajar con los datos según tu aplicación
     } else {
       throw Exception('Failed to load Pokemon data');
     }
