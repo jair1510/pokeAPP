@@ -5,8 +5,7 @@ import 'package:pokeapp/screen/buscador/pokemon_screen.dart';
 
 class CardSearch extends StatelessWidget {
   final Pokemon pokemon;
-  final int index;
-  const CardSearch({super.key, required this.pokemon, required this.index});
+  const CardSearch({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class CardSearch extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PokemonScreen(pokemon: pokemon,index: index,),
+            builder: (context) => PokemonScreen(pokemon: pokemon),
           ),
         );
       },
@@ -54,7 +53,7 @@ class CardSearch extends StatelessWidget {
                     Row(
                       mainAxisAlignment : MainAxisAlignment.end,
                       children: [
-                      Text(index.toString()),
+                      Text('${pokemon.number ?? ''}'),
                       SizedBox(width: 12,)
                     ],)
                   ],

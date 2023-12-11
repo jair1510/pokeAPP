@@ -5,8 +5,7 @@ import 'package:pokeapp/screen/buscador/widget/card_pokemon.dart';
 
 class PokemonScreen extends StatefulWidget {
   final Pokemon pokemon;
-  final int index;
-  const PokemonScreen({super.key, required this.pokemon, required this.index});
+  const PokemonScreen({super.key, required this.pokemon});
 
   @override
   State<PokemonScreen> createState() => _PokemonScreenState();
@@ -25,7 +24,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    '#${widget.index}',
+                    '#${widget.pokemon.number}',
                     style: TextStyle(
                       fontSize: 40.0,  ),
                   ),

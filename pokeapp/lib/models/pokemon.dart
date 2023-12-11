@@ -5,13 +5,13 @@ class Pokemon {
   final int baseExperience;
   final String name;
   final String image;
-
+  int? number;
   Pokemon({
     required this.name,
     required this.abilities,
     required this.baseExperience,
     required this.image,
-    
+    this.number,
   });
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {

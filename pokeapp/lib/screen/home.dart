@@ -29,13 +29,15 @@ class _HomeState extends State<Home> {
     List<Pokemon> pokemonDataList = [];
     for (int i = 1; i <= 150; i++) {
       Pokemon pokemon = await PokemonAPI.fetchPokemonData(i.toString());
+      pokemon.number = i;
       pokemonDataList.add(pokemon);
       setState(() {
         loadedPokemonCount = i; // Actualiza el contador de Pokémon cargados
       });
     }
     setState(() {
-      allPokemons = pokemonDataList; // Establece la copia de respaldo de todos los Pokémon
+      allPokemons =
+          pokemonDataList; // Establece la copia de respaldo de todos los Pokémon
       displayedPokemons = pokemonDataList; // Establece la lista a mostrar
       isLoading = false; // Detiene la pantalla de carga
     });
@@ -47,7 +49,8 @@ class _HomeState extends State<Home> {
     }).toList();
 
     setState(() {
-      displayedPokemons = searchList; // Actualiza la lista mostrada con los resultados de búsqueda
+      displayedPokemons =
+          searchList; // Actualiza la lista mostrada con los resultados de búsqueda
     });
   }
 
@@ -55,9 +58,18 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: EasySearchBar(
+        iconTheme: const IconThemeData(
+          color:
+              Colors.white, 
+        ),
         searchBackgroundColor: Colors.blueGrey,
         backgroundColor: Colors.blueGrey,
-        title: const Text('Buscar Pokémon'),
+        title: const Text(
+          'Buscar Pokémon',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         onSearch: (value) => filterSearch(value),
       ),
       body: isLoading
@@ -65,7 +77,10 @@ class _HomeState extends State<Home> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(),
+                  CircularProgressIndicator(
+                    backgroundColor:Colors.blueGrey,
+                    color: Colors.blueGrey[300]
+                  ),
                   SizedBox(height: 10),
                   Text('Pokémon obtenidos: $loadedPokemonCount/150'),
                 ],
@@ -74,13 +89,9 @@ class _HomeState extends State<Home> {
           : ListView.builder(
               itemCount: displayedPokemons.length,
               itemBuilder: (context, index) {
-                return CardSearch(
-                  pokemon: displayedPokemons[index],
-                  index: index + 1,
-                );
+                return CardSearch(pokemon: displayedPokemons[index]);
               },
             ),
     );
   }
 }
-

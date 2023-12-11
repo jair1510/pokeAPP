@@ -11,7 +11,7 @@ class CardPokemon extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(top: 12.0),
         decoration: BoxDecoration(
-      color: Colors.grey,
+      color: Colors.blueGrey,
       borderRadius: BorderRadius.circular(30.0),
         ),
         child: Padding(
@@ -20,9 +20,15 @@ class CardPokemon extends StatelessWidget {
             crossAxisAlignment:CrossAxisAlignment.start,
             children: [
               
-              Text(pokemon.name.toUpperCase()),
-                  Text('Base Experience: ${pokemon.baseExperience}'),
-                  Text('Ability:'),
+              Text(pokemon.name.toUpperCase(),style: TextStyle(
+            color: Colors.white,
+          ),),
+                  Text('Base Experience: ${pokemon.baseExperience}',style: TextStyle(
+            color: Colors.white,
+          ),),
+                  Text('Ability:',style: TextStyle(
+            color: Colors.white,
+          ),),
                   Divider(),
                   Column(
                     crossAxisAlignment:CrossAxisAlignment.center,
@@ -30,8 +36,12 @@ class CardPokemon extends StatelessWidget {
                       return Column(
                         crossAxisAlignment:CrossAxisAlignment.start,
                         children: [
-                          Text('Ability Name: ${ability.ability.name}'),
-                          Text('Slot: ${ability.slot.toString()}'),
+                          Text('Ability Name: ${ability.ability.name}',style: TextStyle(
+            color: Colors.white,
+          ),),
+                          Text('Slot: ${ability.slot.toString()}',style: TextStyle(
+            color: Colors.white,
+          ),),
                           Divider(),
                         ],
                       );
