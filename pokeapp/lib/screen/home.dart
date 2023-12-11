@@ -14,10 +14,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String searchValue = '';
   late Future<List<Pokemon>> pokemonList;
-  List<Pokemon> displayedPokemons = []; // Lista a mostrar en el ListView
-  List<Pokemon> allPokemons = []; // Copia de respaldo de todos los Pokémon
+  List<Pokemon> displayedPokemons = []; 
+  List<Pokemon> allPokemons = []; 
   bool isLoading = true;
-  int loadedPokemonCount = 0; // Contador para mostrar el progreso de carga
+  int loadedPokemonCount = 0;
 
   @override
   void initState() {
@@ -32,14 +32,14 @@ class _HomeState extends State<Home> {
       pokemon.number = i;
       pokemonDataList.add(pokemon);
       setState(() {
-        loadedPokemonCount = i; // Actualiza el contador de Pokémon cargados
+        loadedPokemonCount = i; 
       });
     }
     setState(() {
       allPokemons =
-          pokemonDataList; // Establece la copia de respaldo de todos los Pokémon
-      displayedPokemons = pokemonDataList; // Establece la lista a mostrar
-      isLoading = false; // Detiene la pantalla de carga
+          pokemonDataList;
+      displayedPokemons = pokemonDataList; 
+      isLoading = false; 
     });
   }
 
@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
 
     setState(() {
       displayedPokemons =
-          searchList; // Actualiza la lista mostrada con los resultados de búsqueda
+          searchList; 
     });
   }
 
